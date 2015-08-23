@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
   # before_filter :cors_preflight_check
-  # after_filter :cors_set_access_control_headers
+  before_filter :cors_set_access_control_headers
+  after_filter :cors_set_access_control_headers
 
   def cors_set_access_control_headers
     headers['Access-Control-Allow-Origin'] = 'http://rails-cart.s3-website-us-west-2.amazonaws.com'
