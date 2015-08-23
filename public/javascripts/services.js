@@ -46,7 +46,7 @@ app.factory('ShoppingCart', ['$http', '$cookies', function ($http, $cookies) {
 
   ShoppingCart.createCart = function (item) {
     return $http.post('/carts', {item}).then(function (cart) {
-      $cookies.put('cart_id', cart.data._id.$oid);
+      $cookies.put('cart_id', cart.data._id);
       return cart.data;
     })
   }
@@ -58,7 +58,7 @@ app.factory('ShoppingCart', ['$http', '$cookies', function ($http, $cookies) {
       })).then(function (items) {
         items = items.map(function (item) {
           for (var i = 0; i < cart.data.items.length; i++) {
-            if (cart.data.items[i].item_id === item.data._id.$oid){
+            if (cart.data.items[i].item_id === item.data._id){
               cart.data.items[i].info = item.data;
               return cart.data.items[i];
             }

@@ -9,10 +9,9 @@ class CartsController < ApplicationController
   end
 
   def create
-    puts params
     @cart = Cart.create(
       user_id: '',
-      items: [{item_id: params[:item][:item_id][:$oid], quantity: params[:item][:quantity]}]
+      items: [{item_id: params[:item][:item_id], quantity: params[:item][:quantity]}]
     )
     respond_to do |format|
       format.json { render :json => @cart }
@@ -20,6 +19,16 @@ class CartsController < ApplicationController
   end
 
   def update
+    puts params
+    @cart = Cart.find(params[:id])
+    @cart.update_attributes(
+      user_id: params[:cart][:user_id],
+      items: params[:cart][:items]
+    )
+    @cart.inspect
+    respond_to do |format|
+      format.json { render :json => @cart }
+    end
   end
 
   def updateitem
