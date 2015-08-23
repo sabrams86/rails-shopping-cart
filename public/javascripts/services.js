@@ -46,7 +46,7 @@ app.factory('ShoppingCart', ['$http', '$cookies', function ($http, $cookies) {
 
   ShoppingCart.createCart = function (item) {
     return $http.post('/carts', {item}).then(function (cart) {
-      $cookies.put('cart_id', cart.data._id);
+      $cookies.put('cart_id', cart.data._id.$oid);
       return cart.data;
     })
   }
