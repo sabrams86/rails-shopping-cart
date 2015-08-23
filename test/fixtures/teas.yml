@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ingredients: MyString
+  caffeineScale: 1
+  price: 1
+  inStock: false
+  rating: 1
+  imageUrl: MyString
+  categories: 
+
+two:
+  name: MyString
+  ingredients: MyString
+  caffeineScale: 1
+  price: 1
+  inStock: false
+  rating: 1
+  imageUrl: MyString
+  categories: 
