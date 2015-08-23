@@ -68,7 +68,6 @@ app.factory('ShoppingCart', ['$http', '$cookies', function ($http, $cookies) {
         total = items.reduce(function (prev, curr) {
           return ((curr.info.price * 0.01) * curr.quantity) + prev;
         }, 0);
-        console.log(total);
         return [cart, total];
       })
     }, function (err) {
