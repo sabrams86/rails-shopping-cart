@@ -19,7 +19,6 @@ class CartsController < ApplicationController
   end
 
   def update
-    puts params
     @cart = Cart.find(params[:id])
     @cart.update_attributes(
       user_id: params[:cart][:user_id],
@@ -32,5 +31,13 @@ class CartsController < ApplicationController
   end
 
   def updateitem
+    @cart = Cart.find(params[:id])
+    @cart.update_attribute(
+      :items, params[:updatedCart]
+    )
+    @cart.inspect
+    respond_to do |format|
+      format.json { render :json => @cart }
+    end
   end
 end
