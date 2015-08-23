@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :teas, :defaults => { :format => 'json' }
 
+  controller :teas, path: '/teas' do
+    match 'post_action', via: [ :post, :options]
+  end
+
   post 'carts/:id' => 'carts#update', :defaults => { :format => 'json' }
   post 'carts/:id/updateitem' => 'carts#updateitem', :defaults => { :format => 'json' }
 
