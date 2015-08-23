@@ -58,7 +58,7 @@ app.factory('ShoppingCart', ['$http', '$cookies', function ($http, $cookies) {
       })).then(function (items) {
         items = items.map(function (item) {
           for (var i = 0; i < cart.data.items.length; i++) {
-            if (cart.data.items[i].item_id === item.data._id){
+            if (cart.data.items[i].item_id === item.data._id.$oid){
               cart.data.items[i].info = item.data;
               return cart.data.items[i];
             }
@@ -68,6 +68,7 @@ app.factory('ShoppingCart', ['$http', '$cookies', function ($http, $cookies) {
         total = items.reduce(function (prev, curr) {
           return ((curr.info.price * 0.01) * curr.quantity) + prev;
         }, 0);
+        console.log(total);
         return [cart, total];
       })
     }, function (err) {
