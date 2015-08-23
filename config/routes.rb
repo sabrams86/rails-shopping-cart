@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   get '/', :to => redirect('/views/index.html')
 
+  match 'teas/:id', to: 'teas#show', via: [:options]
   resources :teas, :defaults => { :format => 'json' }
   match 'carts', to: 'carts#create', via: [:options]
-  match 'teas/:id', to: 'teas#show', via: [:options]
   match 'carts/:id', to: 'carts#update', via: [:options]
   match 'carts/:id/update/item', to: 'carts#updateitem', via: [:options]
   post 'carts/:id' => 'carts#update', :defaults => { :format => 'json' }
