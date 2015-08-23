@@ -2,9 +2,17 @@ Rails.application.routes.draw do
 
   get '/', :to => redirect('/views/index.html')
 
-  # get 'teas' => 'teas#index'
-
   resources :teas, :defaults => { :format => 'json' }
+
+  resources :carts, :defaults => { :format => 'json' }
+
+  get 'carts/show'
+
+  get 'carts/create'
+
+  get 'carts/update'
+
+  get 'carts/updateitem'
 
   get 'teas/index'
 
