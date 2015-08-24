@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :teas, :defaults => { :format => 'json' }
   match 'carts', to: 'carts#create', via: [:options]
   match 'carts/:id', to: 'carts#update', via: [:options]
-  match 'carts/:id/update/item', to: 'carts#updateitem', via: [:options]
+  match 'carts/:id/updateitem', to: 'carts#updateitem', via: [:options]
   post 'carts/:id' => 'carts#update', :defaults => { :format => 'json' }
   post 'carts/:id/updateitem' => 'carts#updateitem', :defaults => { :format => 'json' }
 
